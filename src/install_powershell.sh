@@ -1,0 +1,28 @@
+#/usr/bin/bash
+set -e
+: "${PWSH_VERSION:=latest}"
+
+if [ "$PWSH_VERSION" == "latest" ]; then
+  PWSH_VERSION="7.6.1"
+fi
+
+
+if [[ $(uname -m) == "aarch64" ]]; then
+  ARCH="arm64"
+elif [[ $(uname -m) == "armv7l" ]] || [[ $(uname -m) == "armv6l" ]] || [[ $(uname -m) == "armv5tel" ]] || [[ $(uname -m) == "arm" ]]; then
+    ARCH="arm32"
+else
+  ARCH="x64"
+fi
+
+if [ -f /etc/alpine-release ]; then 
+  curl -L -o /tmp/powershell.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v${PWSH_VERSION}/powershell-${PWSH_VERSION}-linux-musl-x64.tar.gz
+else
+  curl -L -o /tmp/powershell.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v${PWSH_VERSION}/powershell-${PWSH_VERSION}-linux-${ARCH}.tar.gz
+fi
+
+mkdir -p /opt/microsoft/powershell/7
+tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7
+rm -f /tmp/powershell.tar.gz
+chmod +x /opt/microsoft/powershell/7/pwsh
+ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh

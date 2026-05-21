@@ -1,0 +1,8 @@
+services:
+   pwsh-core-script-schedule:
+    container_name: pwsh-core-script-schedule:latest
+    build:
+      dockerfile: dockerfile
+    env_file: .env
+    volumes:
+      - ./data:/data

@@ -1,0 +1,8 @@
+services:
+   pwsh-core-script-schedule:
+    container_name: pwsh-core-script-schedule:alpine
+    build:
+      dockerfile: dockerfile-alpine
+    env_file: .env
+    volumes:
+      - ./data:/data

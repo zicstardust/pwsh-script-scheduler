@@ -1,0 +1,1 @@
+write-host "This is the test script; please place your script in the SCRIPT_FILE environment variable."

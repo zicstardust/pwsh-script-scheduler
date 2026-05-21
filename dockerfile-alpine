@@ -1,0 +1,47 @@
+FROM alpine:3.23.4
+
+ENV PUID=1000
+ENV PGID=1000
+ENV SCHEDULE_INTERVAL=1d
+ENV SCRIPT_FILE=/test_script.ps1
+
+
+WORKDIR /data
+
+COPY src/entrypoint-alpine.sh /entrypoint.sh
+COPY src/main.ps1 /main.ps1
+COPY src/test_script.ps1 /test_script.ps1
+COPY src/install_powershell.sh /install_powershell.sh
+
+RUN chmod +x /entrypoint.sh; \
+    chmod +x /install_powershell.sh; \
+    \
+    apk add --no-cache su-exec shadow; \
+    addgroup pwsh -g ${PGID}; \
+    adduser -D -u ${PUID} -G pwsh pwsh; \
+    mkdir -p /home/pwsh; \
+    chown -R pwsh:pwsh /home/pwsh; \
+    \
+    apk add --no-cache \
+        ca-certificates \
+        less \
+        curl \
+        ncurses-terminfo-base \
+        krb5-libs \
+        libgcc \
+        libintl \
+        libssl3 \
+        libstdc++ \
+        tzdata \
+        userspace-rcu \
+        zlib \
+        icu-libs \
+        curl \
+        bash; \
+    apk -X https://dl-cdn.alpinelinux.org/alpine/edge/main add --no-cache \
+        lttng-ust \
+        openssh-client
+
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["/usr/bin/pwsh", "-ExecutionPolicy", "Bypass", "-NoProfile", "-File", "/main.ps1"]
