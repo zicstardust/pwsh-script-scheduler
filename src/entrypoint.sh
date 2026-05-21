@@ -1,7 +1,8 @@
 #/usr/bin/bash
 set -e
 
-/install_powershell.sh
+echo "Installing PowerShell Core..."
+/install_powershell.sh 1> /dev/null
 
 : "${PUID:=1000}"
 : "${PGID:=1000}"

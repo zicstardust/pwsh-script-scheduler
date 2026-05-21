@@ -1,5 +1,5 @@
 #/usr/bin/bash
-set -e
+
 PWSH_VERSION="7.6.1"
 
 if [[ $(uname -m) == "aarch64" ]]; then
