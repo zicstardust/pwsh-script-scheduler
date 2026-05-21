@@ -25,8 +25,6 @@ PowerShell Core version: Latest Stable
 | Architecture | Available | Tag |
 | :----: | :----: | ---- |
 | amd64 | ✅ | latest |
-| arm/v6 | ✅ | latest |
-| arm/v7 | ✅ | latest |
 | arm64 | ✅ | latest |
 
 

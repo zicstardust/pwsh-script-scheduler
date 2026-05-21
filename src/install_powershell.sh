@@ -4,8 +4,6 @@ PWSH_VERSION="7.6.1"
 
 if [[ $(uname -m) == "aarch64" ]]; then
   ARCH="arm64"
-elif [[ $(uname -m) == "armv7l" ]] || [[ $(uname -m) == "armv6l" ]] || [[ $(uname -m) == "armv5tel" ]] || [[ $(uname -m) == "arm" ]]; then
-    ARCH="arm32"
 else
   ARCH="x64"
 fi
