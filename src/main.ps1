@@ -1,11 +1,3 @@
-$Arguments = @{
-    FilePath = "/usr/local/bin/pwsh"
-    ArgumentList = "-ExecutionPolicy Bypass -NoProfile -File `"$env:SCRIPT_FILE`" $env:SCRIPT_ARGUMENTS"
-    WorkingDirectory = $env:WORKING_DIRECTORY
-    NoNewWindow = $true
-    Wait = $true
-}
-
 function Set-Interval {
     param (
         [Parameter(Mandatory)]
@@ -44,7 +36,17 @@ function Set-Interval {
     exit 1
 }
 
+$Arguments = @{
+    FilePath = "/usr/local/bin/pwsh"
+    ArgumentList = "-ExecutionPolicy Bypass -NoProfile -File `"$env:SCRIPT_FILE`" $env:SCRIPT_ARGUMENTS"
+    WorkingDirectory = $env:WORKING_DIRECTORY
+    NoNewWindow = $true
+    Wait = $true
+}
+
+
 while ($true){
+    #Write-Host "CONTAINER: Exec: $($Arguments.FilePath) $($Arguments.ArgumentList)" -ForegroundColor Yellow
     Start-Process @Arguments
     Write-Host "CONTAINER: Start interval $env:SCHEDULE_INTERVAL" -ForegroundColor Yellow
     Start-Sleep -Seconds (Set-Interval -Interval $env:SCHEDULE_INTERVAL)
