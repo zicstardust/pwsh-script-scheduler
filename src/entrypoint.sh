@@ -2,6 +2,12 @@
 
 install_powershell.sh
 
+if [ ! -z "$ADDITIONAL_PACKAGES" ]; then
+    echo "Installing additional packages"
+    additional_debian_packages.sh
+fi
+
+
 set -e
 
 : "${PUID:=1000}"
