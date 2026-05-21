@@ -1,6 +1,7 @@
 $Arguments = @{
     FilePath = "/usr/local/bin/pwsh"
     ArgumentList = "-ExecutionPolicy Bypass -NoProfile -File `"$env:SCRIPT_FILE`" $env:SCRIPT_ARGUMENTS"
+    WorkingDirectory = $env:WORKING_DIRECTORY
     NoNewWindow = $true
     Wait = $true
 }

@@ -8,6 +8,7 @@ ENV PUID=1000
 ENV PGID=1000
 ENV SCHEDULE_INTERVAL=1d
 ENV SCRIPT_FILE=/usr/local/src/test_script.ps1
+ENV WORKING_DIRECTORY=/home/pwsh
 
 COPY src/*.sh /usr/local/bin/
 COPY src/*.ps1 /usr/local/src/
