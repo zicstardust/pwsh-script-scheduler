@@ -7,18 +7,12 @@ ENV LC_ALL=en_US.UTF-8
 ENV PUID=1000
 ENV PGID=1000
 ENV SCHEDULE_INTERVAL=1d
-ENV SCRIPT_FILE=/test_script.ps1
+ENV SCRIPT_FILE=/usr/local/src/test_script.ps1
 
+COPY src/*.sh /usr/local/bin/
+COPY src/*.ps1 /usr/local/src/
 
-WORKDIR /data
-
-COPY src/entrypoint.sh /entrypoint.sh
-COPY src/main.ps1 /main.ps1
-COPY src/test_script.ps1 /test_script.ps1
-COPY src/install_powershell.sh /install_powershell.sh
-
-RUN chmod +x /entrypoint.sh; \
-    chmod +x /install_powershell.sh; \
+RUN chmod -R +x /usr/local/bin/*.sh; \
     \
     apt-get update; \
     apt-get -y --no-install-recommends install \
@@ -42,6 +36,6 @@ RUN chmod +x /entrypoint.sh; \
     sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen;  \
     locale-gen
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
 
-CMD ["pwsh", "-ExecutionPolicy", "Bypass", "-NoProfile", "-File", "/main.ps1"]
+CMD ["pwsh", "-ExecutionPolicy", "Bypass", "-NoProfile", "-File", "/usr/local/src/main.ps1"]

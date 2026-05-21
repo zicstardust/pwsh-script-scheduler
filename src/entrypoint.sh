@@ -1,11 +1,13 @@
-#/usr/bin/bash
-set -e
+#!/usr/bin/env bash
 
-echo "Installing PowerShell Core..."
-/install_powershell.sh 1> /dev/null
+install_powershell.sh
+
+set -e
 
 : "${PUID:=1000}"
 : "${PGID:=1000}"
+
+
 
 if ! getent group pwsh >/dev/null; then
     groupadd -g "$PGID" pwsh

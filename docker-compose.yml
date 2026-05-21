@@ -1,8 +1,7 @@
 services:
    pwsh-script-scheduler:
-    container_name: pwsh-script-scheduler:latest
-    build:
-      dockerfile: dockerfile
+    container_name: pwsh-script-scheduler
+    build: .
     env_file: .env
     volumes:
       - ./data:/data

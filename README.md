@@ -49,8 +49,8 @@ services:
 | variables | Function | Default |
 | :----: | --- | --- |
 | `TZ` | Set Timezone | |
-| `PUID` | Set UID with read permission on log files | 1000 |
-| `PGID` | Set GID with read permission on log files | 1000 |
-| `SCRIPT_FILE` | Full script path | /test_script.ps1  |
+| `PUID` | Set UID with read permission on log files | `1000` |
+| `PGID` | Set GID with read permission on log files | `1000` |
+| `SCRIPT_FILE` | Full script path | `/usr/local/src/test_script.ps1`  |
 | `SCRIPT_ARGUMENTS` | Script arguments | |
-| `SCHEDULE_INTERVAL` | Time to generate a new scan of the log files. Example: `30s`: 30 seconds, `5m`: 5 minutes, `1d`: 1 day, `1w`: 1 week. | 1d |
+| `SCHEDULE_INTERVAL` | Time to generate a new scan of the log files. Example: `30s`: 30 seconds, `5m`: 5 minutes, `1d`: 1 day, `1w`: 1 week. | `1d` |
