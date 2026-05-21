@@ -15,12 +15,7 @@ else
   ARCH="x64"
 fi
 
-if [ -f /etc/alpine-release ]; then 
-  curl -L -o /tmp/powershell.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v${PWSH_VERSION}/powershell-${PWSH_VERSION}-linux-musl-x64.tar.gz
-else
-  curl -L -o /tmp/powershell.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v${PWSH_VERSION}/powershell-${PWSH_VERSION}-linux-${ARCH}.tar.gz
-fi
-
+curl -L -o /tmp/powershell.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v${PWSH_VERSION}/powershell-${PWSH_VERSION}-linux-${ARCH}.tar.gz
 mkdir -p /opt/microsoft/powershell/7
 tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7
 rm -f /tmp/powershell.tar.gz

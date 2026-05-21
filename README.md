@@ -11,8 +11,7 @@ PowerShell Core version: Latest Stable
 
 | Tag | Description |
 | :----: | :----: |
-| [`latest`](https://github.com/zicstardust/pwsh-script-scheduler/blob/main/dockerfile) | Debian Base Image |
-| [`alpine`](https://github.com/zicstardust/pwsh-script-scheduler/blob/main/dockerfile-alpine) | Alpine Base Image, amd64 only |
+| [`latest`](https://github.com/zicstardust/pwsh-script-scheduler/blob/main/dockerfile) | Default Tag |
 
 ### Registries
 | Registry | Full image name | Description |
@@ -25,7 +24,7 @@ PowerShell Core version: Latest Stable
 
 | Architecture | Available | Tag |
 | :----: | :----: | ---- |
-| amd64 | ✅ | latest, alpine |
+| amd64 | ✅ | latest |
 | arm/v6 | ✅ | latest |
 | arm/v7 | ✅ | latest |
 | arm64 | ✅ | latest |
