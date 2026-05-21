@@ -1,6 +1,6 @@
 services:
-   pwsh-core-script-schedule:
-    container_name: pwsh-core-script-schedule:latest
+   pwsh-script-scheduler:
+    container_name: pwsh-script-scheduler:latest
     build:
       dockerfile: dockerfile
     env_file: .env

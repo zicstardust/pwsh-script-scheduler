@@ -1,11 +1,6 @@
 #/usr/bin/bash
 set -e
-: "${PWSH_VERSION:=latest}"
-
-if [ "$PWSH_VERSION" == "latest" ]; then
-  PWSH_VERSION="7.6.1"
-fi
-
+PWSH_VERSION="7.6.1"
 
 if [[ $(uname -m) == "aarch64" ]]; then
   ARCH="arm64"
