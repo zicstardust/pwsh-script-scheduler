@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PWSH_VERSION="7.6.1"
+PWSH_VERSION="7.6.2"
 
 if [[ $(uname -m) == "aarch64" ]]; then
   ARCH="arm64"
